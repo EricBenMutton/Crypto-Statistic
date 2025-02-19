@@ -1,0 +1,24 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "node_modules": true,
+        "dist": true
+    },
+    "debug.javascript.autoAttachFilter": "smart",
+    "debug.javascript.terminalOptions": {
+        "skipFiles": [
+            "<node_internals>/**",
+            "**/node_modules/**"
+        ]
+    },
+    "typescript.preferences.importModuleSpecifier": "relative"
+} 
