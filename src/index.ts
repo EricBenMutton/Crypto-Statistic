@@ -2,6 +2,7 @@ import { loadConfig } from './config';
 import { ExchangeFactory } from './exchanges/factory';
 import { ExchangeName } from './types/config';
 import { AccountBalance, ExchangeBalance } from './types/exchange';
+import { updateTable } from './feishu';
 
 interface TotalBalance {
     [exchange: string]: AccountBalance;
@@ -40,6 +41,9 @@ async function main() {
         // 显示余额
         let totalSpot = 0;
         let totalFutures = 0;
+
+        const exchangeTotalMap = new Map<string, number>();
+
         console.log('\n各交易所账户余额:');
         for (const [exchangeName, balance] of Object.entries(balances)) {
             console.log(`\n💰💰💰💰💰💰💰💰💰💰 ${exchangeName.toUpperCase()} 💰💰💰💰💰💰💰💰💰💰`);
@@ -68,6 +72,8 @@ async function main() {
                 console.log(`  现货账户: ${value.spot.toFixed(2)}`);
                 console.log(`  合约账户: ${value.futures.toFixed(2)}`);
                 console.log(`  总计: ${(value.spot + value.futures).toFixed(2)}`);
+
+                exchangeTotalMap.set(exchangeName, value.spot + value.futures);
             }
         }
 
@@ -75,6 +81,8 @@ async function main() {
         console.log('\n总资产价值(USDT):');
         console.log(`  总计: ${(totalSpot + totalFutures).toFixed(2)}`);
 
+        // 更新飞书表格
+        updateTable(exchangeTotalMap);
     } catch (error) {
         console.error('程序运行出错:', error);
         process.exit(1);
