@@ -60,3 +60,23 @@ yarn start
 2. 获取账户余额信息
 3. 计算各币种的美元价值
 4. 显示汇总后的资产信息
+
+## Web 服务
+
+除了命令行运行外，还可以通过 Web API 触发余额检查：
+
+### 启动 Web 服务
+```bash
+npm run server
+# 或
+yarn server
+```
+
+### API 接口
+
+触发余额检查：
+```
+GET http://localhost:3000/balance
+```
+
+服务器将执行余额检查并更新飞书表格。

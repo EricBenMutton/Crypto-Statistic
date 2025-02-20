@@ -9,7 +9,7 @@
                 "<node_internals>/**",
                 "${workspaceFolder}/node_modules/**"
             ],
-            "program": "${workspaceFolder}/src/index.ts",
+            "program": "${workspaceFolder}/src/app.ts",
             "runtimeArgs": [
                 "--nolazy",
                 "-r",
