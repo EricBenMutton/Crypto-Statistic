@@ -62,7 +62,7 @@ export async function updateTable(exchangeTotalMap: Map<string, number>) {
     try {
         const total = Array.from(exchangeTotalMap.values()).reduce((acc, curr) => acc + curr, 0);
         const messageContent = {
-            text: `最新余额: <b>${total}</b>, [点击前往查看](https://yvwhpyaehx.feishu.cn/base/PozbbxxplapYKksFjqlcg6PJnAg?table=tblG1aRTN9WMOh2h&view=vew5pafusT)`
+            text: `最新余额: <b>${total.toFixed(2)}</b>, [点击前往查看](https://yvwhpyaehx.feishu.cn/base/PozbbxxplapYKksFjqlcg6PJnAg?table=tblG1aRTN9WMOh2h&view=vew5pafusT)`
         }
         client.im.v1.message.create({
             params: {
