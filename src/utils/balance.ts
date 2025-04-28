@@ -7,7 +7,7 @@ export function extractNonZeroBalance(balanceData: any): Balance {
     if (balanceData.total) {
         Object.entries(balanceData.total).forEach(([currency, amount]) => {
             const numAmount = Number(amount);
-            if (numAmount > 0) {
+            if (numAmount !== 0) {
                 totalBalance[currency] = numAmount;
             }
         });
