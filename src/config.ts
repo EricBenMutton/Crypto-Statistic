@@ -1,9 +1,10 @@
 import dotenv from 'dotenv';
+import path from 'path';
 import { ExchangeCredentials } from './types/exchange';
 import { ExchangeName } from './types/config';
 
 // 加载 .env 文件
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 function getExchangeConfigFromEnv(prefix: string): ExchangeCredentials | undefined {
     const apiKey = process.env[`${prefix}_API_KEY`];
