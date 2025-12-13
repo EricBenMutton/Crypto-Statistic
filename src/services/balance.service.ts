@@ -1,4 +1,4 @@
-import ccxt from 'ccxt';
+import * as ccxt from 'ccxt';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -13,10 +13,6 @@ export class BalanceService {
   private gateio: ccxt.gateio;
 
   constructor() {
-    this.initializeExchanges();
-  }
-
-  private initializeExchanges() {
     this.kraken = new ccxt.kraken({
       apiKey: process.env.KRAKEN_API_KEY,
       secret: process.env.KRAKEN_API_SECRET

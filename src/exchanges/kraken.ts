@@ -44,11 +44,12 @@ export class KrakenExchange implements ExchangeBalance {
         let totalValue = 0;
 
         for (const [currency, amount] of Object.entries(balance)) {
-            if (currency.startsWith('USD')) {
+            let symbolName = currency.split('.')[0];
+            if (symbolName === 'USDT' || symbolName === 'USD') {
                 totalValue += amount;
             } else {
                 try {
-                    const ticker = await this.spotExchange.fetchTicker(`${currency}/USD`);
+                    const ticker = await this.spotExchange.fetchTicker(`${symbolName}/USD`);
                     if (ticker.last) {
                         totalValue += amount * ticker.last;
                     }

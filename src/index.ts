@@ -10,4 +10,8 @@ Object.entries(config).forEach(([name, credentials]) => {
     console.log(`已配置 ${name.toUpperCase()} 交易所`);
 });
 
-checkAllExchangesBalance().catch(console.error);
+try {
+    checkAllExchangesBalance();
+} catch (error) {
+    console.error('检查交易所余额时出错:', error);
+}
